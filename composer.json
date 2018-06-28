@@ -1,7 +1,7 @@
 {
     "name": "phpbook/database",
     "type": "library",
-    "description": "PHP Database Library For DOCTRINE",
+    "description": "PHP Database Extension For DOCTRINE",
     "keywords": ["php", "database", "fast", "lightweight"],
     "homepage": "https://github.com/phpbook-sources/database",
     "license": "MIT",
