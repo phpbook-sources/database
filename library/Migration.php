@@ -1,8 +1,8 @@
 <?php namespace PHPBook\Database;
 
-class Migration {
+abstract class Migration {
     
-    public function execute(String $connection = Null, $version = Null) {
+    public static function execute(String $connection = Null, $version = Null) {
 
         if (!$connection) {
             $connection = \PHPBook\Database\Configuration\Database::getDefault();
