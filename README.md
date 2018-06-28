@@ -6,7 +6,7 @@
 
 ### About Database
 
-- A lightweight DATABASE PHP library available for DOCTRINE.
+- A lightweight DATABASE PHP extension for DOCTRINE.
 
 ### Composer Install
 
