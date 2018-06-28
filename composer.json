@@ -1,0 +1,26 @@
+{
+    "name": "phpbook/database",
+    "type": "library",
+    "description": "PHP Database Library For DOCTRINE",
+    "keywords": ["php", "database", "fast", "lightweight"],
+    "homepage": "https://github.com/phpbook-sources/database",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PHPBook",
+            "email": "phpbook@programmer.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "doctrine/orm": "*",
+        "doctrine/dbal": "*",
+        "doctrine/migrations": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPBook\\Database\\": "library/"
+        }
+    }
+}
