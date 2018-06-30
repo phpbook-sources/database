@@ -27,10 +27,6 @@
 \PHPBook\Database\Configuration\Database::setConnection('main',
 	(new \PHPBook\Database\Configuration\Connection)
 		->setName('Main')
-		->setExceptionCatcher(function(String $message) {
-			//the PHPBook Database does not throw exceptions, but you can take it here
-			//you can store $message in database or something else
-        })
         ->setDriver([
             'driver' => 'pdo_sqlite',
             'path' => __DIR__ . '/db.sqlite'
@@ -44,10 +40,6 @@
 \PHPBook\Database\Configuration\Database::setConnection('other',
 	(new \PHPBook\Database\Configuration\Connection)
 		->setName('Other')
-		->setExceptionCatcher(function(String $message) {
-			//the PHPBook Database does not throw exceptions, but you can take it here
-			//you can store $message in database or something else
-        })
 		->setDriver([
             'driver' => 'pdo_sqlite',
             'path' => __DIR__ . '/db.sqlite'
