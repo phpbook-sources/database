@@ -13,18 +13,28 @@ abstract class EntityManager {
         };
 
         if (!isset(Static::$connections[$connection])) {
-
+            
             $database = \PHPBook\Database\Configuration\Database::getConnection($connection);
 
             if ($database) {
+
+                $cache = new \Doctrine\Common\Cache\ArrayCache;
+                $configuration = new \Doctrine\ORM\Configuration;
+                $configuration->setMetadataCacheImpl($cache);
+                $driverImpl = $configuration->newDefaultAnnotationDriver($database->getEntitiesPathRoot());
+                $configuration->setMetadataDriverImpl($driverImpl);
+                $configuration->setQueryCacheImpl($cache);
+                $configuration->setProxyDir($database->getProxiesPathRoot());
+                $configuration->setProxyNamespace($database->getProxiesNamespace());
+                $configuration->setAutoGenerateProxyClasses(false);
                 
-                $configuration = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(array($database->getEntitiesPathRoot()), false);
-    
                 Static::$connections[$connection] = \Doctrine\ORM\EntityManager::create($database->getDriver(), $configuration);
     
+            } else {
+
+                return Null;
+
             };
-    
-            return Null;
 
         }
 

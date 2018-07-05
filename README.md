@@ -32,6 +32,9 @@
             'path' => __DIR__ . '/db.sqlite'
         ])
         ->setEntitiesPathRoot('entities/root/path')
+        ->setProxiesPathRoot('entities/root/path')
+        ->setProxiesNamespace('App\Proxy')
+        ->setProxyCacheDriver(new \Doctrine\Common\Cache\ArrayCache)
         ->setMigrationPathRoot('migration/root/path')
         ->setMigrationTable('migrations')
         ->setMigrationNamespace('\App\Migration')
@@ -45,6 +48,9 @@
             'path' => __DIR__ . '/db.sqlite'
         ])
         ->setEntitiesPathRoot('entities/root/path')
+        ->setProxiesPathRoot('entities/root/path')
+        ->setProxiesNamespace('App\Proxy')
+        ->setProxyCacheDriver(new \Doctrine\Common\Cache\ArrayCache)
         ->setMigrationPathRoot('migration/root/path')
         ->setMigrationTable('migrations')
         ->setMigrationNamespace('\App\Migration')
@@ -90,6 +96,12 @@ foreach($connections as $code => $connection) {
 
     //Execute Doctrine Migration in Default Connection. Updates or Downgrades to the version 201010101010.
     \PHPBook\Database\Migration::execute(Null, '201010101010');
+
+    //Generate Doctrine Proxies of Entities in Default Connection.
+    \PHPBook\Database\Proxy::generate();
+
+    //Generate Doctrine Proxy of Entities in a Connection.
+    \PHPBook\Database\Proxy::generate('main');
 		
 ```
 

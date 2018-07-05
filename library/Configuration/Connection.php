@@ -1,4 +1,4 @@
-<?php namespace PHPBook\SMS\Configuration;
+<?php namespace PHPBook\Database\Configuration;
 
 class Connection {
     
@@ -9,6 +9,12 @@ class Connection {
 	private $driver;
 
 	private $entitiesPathRoot;
+
+	private $proxiesPathRoot;
+
+	private $proxiesNamespace;
+
+	private $proxyCacheDriver;
 	
 	private $migrationPathRoot;
 
@@ -49,6 +55,33 @@ class Connection {
 
 	public function setEntitiesPathRoot(String $entitiesPathRoot): Connection {
 		$this->entitiesPathRoot = $entitiesPathRoot;
+		return $this;
+	}
+
+	public function getProxiesPathRoot(): ?String {
+		return $this->proxiesPathRoot;
+	}
+
+	public function setProxiesPathRoot(String $proxiesPathRoot): Connection {
+		$this->proxiesPathRoot = $proxiesPathRoot;
+		return $this;
+	}
+
+	public function getProxiesNamespace(): ?String {
+		return $this->proxiesNamespace;
+	}
+
+	public function setProxiesNamespace(String $proxiesNamespace): Connection {
+		$this->proxiesNamespace = $proxiesNamespace;
+		return $this;
+	}
+
+	public function getProxyCacheDriver(): ?\Doctrine\Common\Cache\CacheProvider {
+		return $this->proxyCacheDriver;
+	}
+
+	public function setProxyCacheDriver(\Doctrine\Common\Cache\CacheProvider $proxyCacheDriver): Connection {
+		$this->proxyCacheDriver = $proxyCacheDriver;
 		return $this;
 	}
 

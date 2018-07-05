@@ -4,17 +4,13 @@ abstract class Migration {
     
     public static function execute(String $connection = Null, $version = Null) {
 
-        if (!$connection) {
-            $connection = \PHPBook\Database\Configuration\Database::getDefault();
-        };
-
         $database = \PHPBook\Database\Configuration\Database::getConnection($connection);
 
         if ($database) {
 
-            $connection = \Doctrine\DBAL\DriverManager::getConnection($database->getDriver());
+            $databaseConnection = \Doctrine\DBAL\DriverManager::getConnection($database->getDriver());
 
-            $configuration = new \Doctrine\DBAL\Migrations\Configuration\Configuration($connection);
+            $configuration = new \Doctrine\DBAL\Migrations\Configuration\Configuration($databaseConnection);
     
             $configuration->setMigrationsTableName($database->getMigrationTable());
     
