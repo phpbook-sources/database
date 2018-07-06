@@ -2,11 +2,27 @@
 
 abstract class Proxy {
     
+    private static function clearPath($dir, $initial = true) { 
+
+        $files = array_diff(scandir($dir), array('.','..')); 
+
+        foreach ($files as $file) { 
+            (is_dir("$dir/$file")) ? Static::clearPath("$dir/$file", false) : unlink("$dir/$file"); 
+        };
+
+        if (!$initial) {
+            return rmdir($dir); 
+        };
+
+    }
+
     public static function generate(String $connection = Null) {
 
         $entityManager = \PHPBook\Database\EntityManager::get($connection);
 
         if ($entityManager) {
+
+            Static::clearPath($database->getProxiesPathRoot());
 
             $proxyFactory = $entityManager->getProxyFactory();
 
