@@ -22,6 +22,8 @@ abstract class Proxy {
 
         if ($entityManager) {
 
+        	$database = \PHPBook\Database\Configuration\Database::getConnection($connection);
+            
             Static::clearPath($database->getProxiesPathRoot());
 
             $proxyFactory = $entityManager->getProxyFactory();

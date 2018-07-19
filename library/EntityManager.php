@@ -18,7 +18,7 @@ abstract class EntityManager {
 
             if ($database) {
 
-                $cache = new \Doctrine\Common\Cache\ArrayCache;
+                $cache = $database->getProxyCacheDriver();
                 $configuration = new \Doctrine\ORM\Configuration;
                 $configuration->setMetadataCacheImpl($cache);
                 $driverImpl = $configuration->newDefaultAnnotationDriver($database->getEntitiesPathRoot());
