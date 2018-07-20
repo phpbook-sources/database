@@ -2,12 +2,12 @@
 
 abstract class Proxy {
     
-    private static function clearPath($dir, $initial = true) { 
+    private static function clearPathRecursive($dir, $initial = true) { 
 
         $files = array_diff(scandir($dir), array('.','..')); 
 
         foreach ($files as $file) { 
-            (is_dir("$dir/$file")) ? Static::clearPath("$dir/$file", false) : unlink("$dir/$file"); 
+            (is_dir("$dir/$file")) ? Static::clearPathRecursive("$dir/$file", false) : unlink("$dir/$file"); 
         };
 
         if (!$initial) {
@@ -24,7 +24,7 @@ abstract class Proxy {
 
         	$database = \PHPBook\Database\Configuration\Database::getConnection($connection);
             
-            Static::clearPath($database->getProxiesPathRoot());
+            Static::clearPathRecursive($database->getProxiesPathRoot());
 
             $proxyFactory = $entityManager->getProxyFactory();
 

@@ -97,10 +97,12 @@ foreach($connections as $code => $connection) {
     //Execute Doctrine Migration in Default Connection. Updates or Downgrades to the version 201010101010.
     \PHPBook\Database\Migration::execute(Null, '201010101010');
 
-    //Generate Doctrine Proxies of Entities in Default Connection. The Directory will be cleared before.
+    //Generate Doctrine Proxies of Entities in Default Connection. 
+    //The Directory will be cleared recursively before generate, so you should have a unique folder to this proxies.
     \PHPBook\Database\Proxy::generate();
 
-    //Generate Doctrine Proxy of Entities in a Connection. The Directory will be cleared before.
+    //Generate Doctrine Proxy of Entities in a Connection.
+    //The Directory will be cleared recursively before generate, so you should have a unique folder to this proxies.
     \PHPBook\Database\Proxy::generate('main');
 		
 ```
