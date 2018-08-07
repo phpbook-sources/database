@@ -37,6 +37,7 @@
         ->setProxyCacheDriver(new \Doctrine\Common\Cache\ArrayCache)
         ->setMigrationPathRoot('migration/root/path')
         ->setMigrationTable('migrations')
+        ->setMigrationTableColumnVersion('version')
         ->setMigrationNamespace('\App\Migration')
 );
 
@@ -53,6 +54,7 @@
         ->setProxyCacheDriver(new \Doctrine\Common\Cache\ArrayCache)
         ->setMigrationPathRoot('migration/root/path')
         ->setMigrationTable('migrations')
+        ->setMigrationTableColumnVersion('version')
         ->setMigrationNamespace('\App\Migration')
 );
 

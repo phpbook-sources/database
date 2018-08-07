@@ -20,6 +20,8 @@ class Connection {
 
 	private $migrationTable;
 
+	private $migrationTableColumnVersion;
+
 	private $migrationNamespace;
 
 	public function getName(): String {
@@ -103,6 +105,15 @@ class Connection {
 		return $this;
 	}
 
+	public function getMigrationTableColumnVersion(): ?String {
+		return $this->migrationTableColumnVersion;
+	}
+
+	public function setMigrationTableColumnVersion(String $migrationTableColumnVersion): Connection {
+		$this->migrationTableColumnVersion = $migrationTableColumnVersion;
+		return $this;
+	}
+	
 	public function getMigrationNamespace(): ?String {
 		return $this->migrationNamespace;
 	}

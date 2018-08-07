@@ -13,6 +13,8 @@ abstract class Migration {
             $configuration = new \Doctrine\DBAL\Migrations\Configuration\Configuration($databaseConnection);
     
             $configuration->setMigrationsTableName($database->getMigrationTable());
+            
+            $configuration->setMigrationsColumnName($database->getMigrationTableColumnVersion());
     
             $configuration->setMigrationsNamespace($database->getMigrationNamespace());
     
