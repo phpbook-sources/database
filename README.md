@@ -3,6 +3,7 @@
 + [Composer Install](#composer-install)
 + [Declare Configurations](#declare-configurations)
 + [Use Database](#use-database)
++ [Helpers](#helpers)
 
 ### About Database
 
@@ -107,6 +108,16 @@ foreach($connections as $code => $connection) {
     //The Directory will be cleared recursively before generate, so you should have a unique folder to this proxies.
     \PHPBook\Database\Proxy::generate('main');
 		
+```
+
+### Helpers
+
+```php
+        
+    //Generate an UUID
+    \PHPBook\Database\UUID::generate('main'); //50f71b8c-3bf4-4303-b520-357399ef0a41
+
+
 ```
 
 You can check the doctrine documentation to use the entity manager, migrations and other resources.
