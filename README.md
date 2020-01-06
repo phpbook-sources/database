@@ -114,8 +114,11 @@ foreach($connections as $code => $connection) {
 
 ```php
         
-    //Generate an UUID
-    \PHPBook\Database\UUID::generate('main'); //50f71b8c-3bf4-4303-b520-357399ef0a41
+    //Generate an UUID version 1
+    \PHPBook\Database\UUID::generate('prefix-string', 'node-alias');
+    \PHPBook\Database\UUID::generate('prefix-string', '');
+    \PHPBook\Database\UUID::generate('', 'node-alias');
+    \PHPBook\Database\UUID::generate();
 
 
 ```
