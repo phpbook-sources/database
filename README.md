@@ -24,7 +24,6 @@
  * ******************************************/
 
 //Connections
-
 \PHPBook\Database\Configuration\Database::setConnection('main',
 	(new \PHPBook\Database\Configuration\Connection)
 		->setName('Main')
@@ -40,6 +39,7 @@
         ->setMigrationTable('migrations')
         ->setMigrationTableColumnVersion('version')
         ->setMigrationNamespace('\App\Migration')
+        ->setEventManager($eventManager) // \Doctrine\Common\EventManager
 );
 
 \PHPBook\Database\Configuration\Database::setConnection('other',

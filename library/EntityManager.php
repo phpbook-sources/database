@@ -27,8 +27,8 @@ abstract class EntityManager {
                 $configuration->setProxyDir($database->getProxiesPathRoot());
                 $configuration->setProxyNamespace($database->getProxiesNamespace());
                 $configuration->setAutoGenerateProxyClasses(false);
-                
-                Static::$connections[$connection] = \Doctrine\ORM\EntityManager::create($database->getDriver(), $configuration);
+
+                Static::$connections[$connection] = \Doctrine\ORM\EntityManager::create($database->getDriver(), $configuration, $database->getEventManager());
     
             } else {
 

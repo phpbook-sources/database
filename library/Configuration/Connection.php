@@ -24,6 +24,8 @@ class Connection {
 
 	private $migrationNamespace;
 
+	private $eventManager = null;
+
 	public function getName(): String {
 		return $this->name;
 	}
@@ -122,5 +124,14 @@ class Connection {
 		$this->migrationNamespace = $migrationNamespace;
 		return $this;
 	}
+
+    public function getEventManager(): ?\Doctrine\Common\EventManager {
+        return $this->eventManager;
+    }
+
+    public function setEventManager($eventManager): Connection {
+	    $this->eventManager = $eventManager;
+	    return $this;
+    }
 
 }
