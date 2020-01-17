@@ -82,10 +82,10 @@ foreach($connections as $code => $connection) {
 
 ```php
 		
-	//Get Doctrine Entity Manager of a Connection or Null
+	//Get a Singleton Doctrine Entity Manager of a Connection or Null
     \PHPBook\Database\EntityManager::get('main');
 
-    //Get Default Doctrine Entity Manager or Null 
+    //Get a Singleton Default Doctrine Entity Manager or Null 
     \PHPBook\Database\EntityManager::get();
 
     //Execute Doctrine Migration of a Connection. Updates to the better version available.
