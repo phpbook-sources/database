@@ -14,7 +14,7 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "doctrine/orm": "2.7.0",
+        "doctrine/orm": "2.6.2",
         "doctrine/dbal": "2.8.0",
         "doctrine/migrations": "1.8.1"
     },
