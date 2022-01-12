@@ -18,12 +18,17 @@ abstract class EntityManager {
 
             if ($database) {
 
-                $cache = $database->getProxyCacheDriver();
+                $metadataCache = $database->getMetadataCache();
+                $queryCache = $database->getQueryCache();
                 $configuration = new \Doctrine\ORM\Configuration;
-                $configuration->setMetadataCacheImpl($cache);
+                if ($metadataCache) {
+                    $configuration->setMetadataCache($metadataCache);
+                }
+                if ($queryCache) {
+                    $configuration->setQueryCache($queryCache);
+                }
                 $driverImpl = $configuration->newDefaultAnnotationDriver($database->getEntitiesPathRoot());
                 $configuration->setMetadataDriverImpl($driverImpl);
-                $configuration->setQueryCacheImpl($cache);
                 $configuration->setProxyDir($database->getProxiesPathRoot());
                 $configuration->setProxyNamespace($database->getProxiesNamespace());
                 $configuration->setAutoGenerateProxyClasses(false);

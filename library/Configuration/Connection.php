@@ -14,7 +14,9 @@ class Connection {
 
 	private $proxiesNamespace;
 
-	private $proxyCacheDriver;
+	private $metadataCache;
+
+    private $queryCache;
 	
 	private $migrationPathRoot;
 
@@ -80,16 +82,25 @@ class Connection {
 		return $this;
 	}
 
-	public function getProxyCacheDriver(): ?\Doctrine\Common\Cache\CacheProvider {
-		return $this->proxyCacheDriver;
+	public function getMetadataCache(): ?\Symfony\Contracts\Cache\CacheInterface {
+		return $this->metadataCache;
 	}
 
-	public function setProxyCacheDriver(\Doctrine\Common\Cache\CacheProvider $proxyCacheDriver): Connection {
-		$this->proxyCacheDriver = $proxyCacheDriver;
+	public function setMetadataCache(\Symfony\Contracts\Cache\CacheInterface $metadataCache): Connection {
+		$this->metadataCache = $metadataCache;
 		return $this;
 	}
 
-	public function getMigrationPathRoot(): ?String {
+    public function getQueryCache(): ?\Symfony\Contracts\Cache\CacheInterface {
+        return $this->queryCache;
+    }
+
+    public function setQueryCache(\Symfony\Contracts\Cache\CacheInterface $queryCache): Connection {
+        $this->queryCache = $queryCache;
+        return $this;
+    }
+
+    public function getMigrationPathRoot(): ?String {
 		return $this->migrationPathRoot;
 	}
 

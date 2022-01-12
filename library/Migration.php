@@ -1,5 +1,10 @@
 <?php namespace PHPBook\Database;
 
+use Doctrine\Migrations\MigrationRepository;
+use Doctrine\Migrations\Migrator;
+use Doctrine\Migrations\Tools\Console\Command;
+use Doctrine\Migrations\Version\Factory;
+
 abstract class Migration {
     
     public static function execute(String $connection = Null, $version = Null) {
@@ -10,7 +15,9 @@ abstract class Migration {
 
             $databaseConnection = \Doctrine\DBAL\DriverManager::getConnection($database->getDriver());
 
-            $configuration = new \Doctrine\DBAL\Migrations\Configuration\Configuration($databaseConnection);
+            $allOrNothing = true;
+
+            $configuration = new \Doctrine\Migrations\Configuration\Configuration($databaseConnection);
     
             $configuration->setMigrationsTableName($database->getMigrationTable());
             
@@ -21,10 +28,14 @@ abstract class Migration {
             $configuration->setMigrationsDirectory($database->getMigrationPathRoot());
     
             $configuration->registerMigrationsFromDirectory($configuration->getMigrationsDirectory());
-    
-            $migration = new \Doctrine\DBAL\Migrations\Migration($configuration);
-            
-            $migration->migrate($version);
+
+            $configuration->setAllOrNothing($allOrNothing);
+
+            $factory = new \Doctrine\Migrations\DependencyFactory($configuration);
+
+            $migrator = new \Doctrine\Migrations\Migrator($configuration, $factory->getMigrationRepository(), $factory->getOutputWriter(), $factory->getStopwatch());
+
+            $migrator->migrate($version);
     
         };
 
